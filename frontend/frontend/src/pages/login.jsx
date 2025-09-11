@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import lightLogo from '../assets/light.svg';
+import lightSvg from '../assets/light.svg';
 import backgroundVideo from '../assets/324f53c8af273f72c36f5c0d35af7b30.mp4';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showAnimation, setShowAnimation] = useState(false);
+    const [currentLanguage, setCurrentLanguage] = useState(0);
     const navigate = useNavigate();
+    const languages = [
+        'Welcome in English', 'Bienvenue en Français', 'Willkommen auf Deutsch',
+        'Benvenuto in Italiano', 'Bienvenido a Español', '日本語へようこそ',
+        '中文欢迎', 'Arabic مرحبا', 'Russian Добро пожаловать', 'Hindi स्वागत है'
+    ];
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,7 +31,21 @@ const Login = () => {
             const data = await response.json();
 
             if (data.success) {
-                navigate('/home');
+                setShowAnimation(true);
+                
+                const languageInterval = setInterval(() => {
+                    setCurrentLanguage(prev => (prev + 1) % 10);
+                }, 300);
+
+                const redirectTimeout = setTimeout(() => {
+                    clearInterval(languageInterval);
+                    navigate('/home');
+                }, 3000);
+
+                return () => {
+                    clearInterval(languageInterval);
+                    clearTimeout(redirectTimeout);
+                };
             } else {
                 alert(data.message);
             }
@@ -43,6 +65,19 @@ const Login = () => {
             >
                 <source src={backgroundVideo} type="video/mp4" />
             </video>
+            
+            {showAnimation && (
+                <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
+                    <img
+                        src={lightSvg}
+                        alt="Loading"
+                        className="w-32 h-32 mb-8 animate-fade-in-out"
+                    />
+                    <div className="text-white text-center transition-opacity duration-500">
+                        <p className="text-xl font-light">{languages[currentLanguage]}</p>
+                    </div>
+                </div>
+            )}
             {/*!isLogin && <div className="absolute top-0 left-0 w-full h-full bg-black/45 z-0"></div>*/}   
                 <div className="relative z-10 flex flex-col justify-center items-center border rounded-md px-10 py-10 bg-black/40 border-none backdrop-blur-sm">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">

@@ -75,7 +75,7 @@ const Weather = () => {
   }, []); // Auto-fetch on component mount
 
   return (
-    <div className="max-w-2xl w-full mx-4 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 transition-all duration-300 hover:shadow-2xl">
+    <div className="max-w-2xl w-full mx-4 bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl p-8 transition-all duration-500 hover:shadow-2xl hover:scale-[1.01] border border-white/20 hover:border-white/30 animate-glow">
       <div className="flex gap-2 mb-6">
         <input
           type="text"
