@@ -1,14 +1,36 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import lightLogo from '../assets/light.svg';
 import backgroundVideo from '../assets/324f53c8af273f72c36f5c0d35af7b30.mp4';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Email:', email, 'Password:', password);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await fetch('http://localhost:5000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                navigate('/home');
+            } else {
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+            alert('An error occurred during login. Please try again.');
+        }
     };
 
     return (
@@ -74,7 +96,7 @@ const Login = () => {
 
                         <p className="mt-10 text-center text-sm/6 text-gray-400">
                             Not a member?
-                            <a href="#" className="font-semibold text-indigo-400 hover:text-indigo-300">Start a 14 day free trial</a>
+                            <a href="#" className="font-semibold pl-2 text-indigo-400 hover:text-indigo-300">Sign up then</a>
                         </p>
                     </div>
                 </div>
