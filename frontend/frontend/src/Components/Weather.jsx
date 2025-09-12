@@ -16,7 +16,7 @@ const Weather = () => {
   const [unit, setUnit] = useState('metric');
   React.useEffect(() => {
     fetchWeather();
-  }, []); // Fetch once on mount
+  }, []);
   
     const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
   const getWeatherIcon = (condition) => {
@@ -61,10 +61,9 @@ const Weather = () => {
     }
   };
 
-  // Single useEffect for initial load
   React.useEffect(() => {
     fetchWeather();
-  }, []); // Auto-load on mount
+  }, []);
 
   return (
     <div className="max-w-2xl w-full mx-auto bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl p-8 transition-all duration-500 hover:shadow-2xl hover:scale-[1.01] border border-white/20 hover:border-white/30 animate-glow min-h-[60vh] flex flex-col items-center justify-center">
