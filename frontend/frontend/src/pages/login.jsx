@@ -11,9 +11,17 @@ const Login = () => {
     const [currentLanguage, setCurrentLanguage] = useState(0);
     const navigate = useNavigate();
     const languages = [
-        'Welcome in English', 'Bienvenue en Français', 'Willkommen auf Deutsch',
-        'Benvenuto in Italiano', 'Bienvenido a Español', '日本語へようこそ',
-        '中文欢迎', 'Arabic مرحبا', 'Russian Добро пожаловать', 'Hindi स्वागत है'
+        'வணக்கம்',
+        'స్వాగతం',
+        'സ്വാഗതം',
+        'स्वागत है',
+        'Welcome',
+        'Bienvenido',
+        '欢迎',
+        'ようこそ',
+        '환영합니다',
+        'ברוך הבא'
+
     ];
 
     const handleSubmit = async (event) => {
@@ -32,7 +40,7 @@ const Login = () => {
 
             if (data.success) {
                 setShowAnimation(true);
-                
+
                 const languageInterval = setInterval(() => {
                     setCurrentLanguage(prev => (prev + 1) % 10);
                 }, 300);
@@ -65,7 +73,7 @@ const Login = () => {
             >
                 <source src={backgroundVideo} type="video/mp4" />
             </video>
-            
+
             {showAnimation && (
                 <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
                     <img
@@ -78,65 +86,65 @@ const Login = () => {
                     </div>
                 </div>
             )}
-            {/*!isLogin && <div className="absolute top-0 left-0 w-full h-full bg-black/45 z-0"></div>*/}   
-                <div className="relative z-10 flex flex-col justify-center items-center border rounded-md px-10 py-10 bg-black/40 border-none backdrop-blur-sm">
-                    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                        <img src={lightLogo} alt="PradeepKumaeEmblem" className="mx-auto h-20 w-auto" />
-                        <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-pink-500">Sign in to PradeepKumar</h2>
-                    </div>
+            {/*!isLogin && <div className="absolute top-0 left-0 w-full h-full bg-black/45 z-0"></div>*/}
+            <div className="relative z-10 flex flex-col justify-center items-center border rounded-md px-10 py-10 bg-black/40 border-none backdrop-blur-sm">
+                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                    <img src={lightLogo} alt="PradeepKumaeEmblem" className="mx-auto h-20 w-auto" />
+                    <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-pink-500">Sign in to PradeepKumar</h2>
+                </div>
 
-                    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div>
-                                <label htmlFor="email" className="block text-sm/6 font-medium text-pink-500">Email address</label>
-                                <div className="mt-2">
-                                    <input
-                                        id="email"
-                                        type="email"
-                                        name="email"
-                                        required
-                                        autoComplete="email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-pink-500 outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                                    />
+                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div>
+                            <label htmlFor="email" className="block text-sm/6 font-medium text-pink-500">Email address</label>
+                            <div className="mt-2">
+                                <input
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    required
+                                    autoComplete="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-pink-500 outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className="flex items-center justify-between">
+                                <label htmlFor="password" className="block text-sm/6 font-medium text-pink-500">Password</label>
+                                <div className="text-sm">
+                                    <a href="#" className="font-semibold text-pink-400 hover:text-pink-300">Forgot password?</a>
                                 </div>
                             </div>
-
-                            <div>
-                                <div className="flex items-center justify-between">
-                                    <label htmlFor="password" className="block text-sm/6 font-medium text-pink-500">Password</label>
-                                    <div className="text-sm">
-                                        <a href="#" className="font-semibold text-pink-400 hover:text-pink-300">Forgot password?</a>
-                                    </div>
-                                </div>
-                                <div className="mt-2">
-                                    <input
-                                        id="password"
-                                        type="password"
-                                        name="password"
-                                        required
-                                        autoComplete="current-password"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-pink-500 outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                                    />
-                                </div>
+                            <div className="mt-2">
+                                <input
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    required
+                                    autoComplete="current-password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-pink-500 outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                                />
                             </div>
+                        </div>
 
-                            <div>
-                                <button type="submit" className="flex w-full justify-center rounded-md bg-pink-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-pink-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500">Sign in</button>
-                            </div>
-                        </form>
+                        <div>
+                            <button type="submit" className="flex w-full justify-center rounded-md bg-pink-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-pink-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500">Sign in</button>
+                        </div>
+                    </form>
 
-                        <p className="mt-10 text-center text-sm/6 text-gray-400">
-                            Not a member?
-                            <a href="#" className="font-semibold pl-2 text-pink-400 hover:text-pink-300">Sign up then</a>
-                        </p>
-                    </div>
+                    <p className="mt-10 text-center text-sm/6 text-gray-400">
+                        Not a member?
+                        <a href="#" className="font-semibold pl-2 text-pink-400 hover:text-pink-300">Sign up then</a>
+                    </p>
                 </div>
             </div>
-        
+        </div>
+
     )
 }
 

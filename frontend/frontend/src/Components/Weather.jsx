@@ -93,7 +93,7 @@ const Weather = () => {
         </button>
       </div>
 
-      {loading && <p className="text-center">Loading...</p>}
+      {loading && <p className="text-center">Please wait....</p>}
       
       {error && (
         <p className="text-red-500 text-center mb-4">{error}</p>
@@ -108,7 +108,7 @@ const Weather = () => {
               className="w-24 h-24 mx-auto" 
             />
             <div className="flex items-center justify-center gap-3">
-              <p className="text-5xl font-bold mt-2">
+              <p className="text-5xl font-bold mt-2 text-gray-50">
                 {weather.temp}°{unit === 'metric' ? 'C' : 'F'}
               </p>
               <button
@@ -118,28 +118,28 @@ const Weather = () => {
                 °{unit === 'metric' ? 'F' : 'C'}
               </button>
             </div>
-            <div className="col-span-2 p-3 bg-gray-50 rounded-lg mt-4">
-              <p className="text-sm font-mono text-gray-600">
+            <div className="col-span-2 p-3 bg-black/25 rounded-lg mt-4">
+              <p className="text-sm font-mono text-gray-50">
                 Coordinates: {weather.lat.toFixed(2)}, {weather.lon.toFixed(2)}
               </p>
             </div>
-            <p className="text-gray-600 mt-2">{weather.cityName}, {weather.country}</p>
-            <p className="text-lg text-gray-700 mt-1">{weather.condition}</p>
+            <p className="text-gray-50 mt-2">{weather.cityName}, {weather.country}</p>
+            <p className="text-lg text-gray-50 mt-1">{weather.condition}</p>
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-4">
-            <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+            <div className="flex items-center gap-2 p-3 bg-black/25 rounded-lg">
               <img src={humidityIcon} alt="Humidity" className="w-8 h-8" />
-              <div>
-                <p className="font-semibold">{weather.humidity}%</p>
+              <div className='pl-2'>
+                <p className="font-semibold text-gray-50">{weather.humidity}%</p>
                 <p className="text-sm text-gray-500">Humidity</p>
               </div>
             </div>
             
-            <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+            <div className="flex items-center gap-2 p-3 bg-black/25 rounded-lg">
               <img src={windIcon} alt="Wind" className="w-8 h-8" />
-              <div>
-                <p className="font-semibold">{weather.wind} km/h</p>
+              <div className='pl-2'>
+                <p className="font-semibold text-gray-50">{weather.wind} km/h</p>
                 <p className="text-sm text-gray-500">Wind Speed</p>
               </div>
             </div>
