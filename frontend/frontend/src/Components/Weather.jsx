@@ -16,12 +16,7 @@ const Weather = () => {
   const [unit, setUnit] = useState('metric');
   React.useEffect(() => {
     fetchWeather();
-  }, []); // Runs once on component mount
-
-  
-    React.useEffect(() => {
-      fetchWeather();
-    }, []); // Auto-fetch on mount
+  }, []); // Fetch once on mount
   
     const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
   const getWeatherIcon = (condition) => {
@@ -66,13 +61,10 @@ const Weather = () => {
     }
   };
 
+  // Single useEffect for initial load
   React.useEffect(() => {
     fetchWeather();
-  }, []); // Auto-load Ambur weather on mount
-
-  React.useEffect(() => {
-    fetchWeather();
-  }, []); // Auto-fetch on component mount
+  }, []); // Auto-load on mount
 
   return (
     <div className="max-w-2xl w-full mx-4 bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl p-8 transition-all duration-500 hover:shadow-2xl hover:scale-[1.01] border border-white/20 hover:border-white/30 animate-glow">
@@ -109,11 +101,15 @@ const Weather = () => {
             />
             <div className="flex items-center justify-center gap-3">
               <p className="text-5xl font-bold mt-2 text-gray-50">
-                {weather.temp}°{unit === 'metric' ? 'C' : 'F'}
+                {unit === 'metric' ? weather.temp : Math.round((weather.temp * 9/5) + 32)}°{unit === 'metric' ? 'C' : 'F'}
               </p>
               <button
                 onClick={() => setUnit(prev => prev === 'metric' ? 'imperial' : 'metric')}
-                className="mt-2 px-3 py-1 rounded-lg bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors"
+                className={`mt-2 px-3 py-1 rounded-lg transition-colors border-none shadow-xl ${
+                  unit === 'metric'
+                    ? 'bg-red-400 text-white  hover:bg-red-500'
+                    : 'bg-white text-red-400 hover:bg-blue-200'
+                }`}
               >
                 °{unit === 'metric' ? 'F' : 'C'}
               </button>
