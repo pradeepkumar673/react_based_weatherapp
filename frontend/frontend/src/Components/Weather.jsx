@@ -67,12 +67,12 @@ const Weather = () => {
   }, []); // Auto-load on mount
 
   return (
-    <div className="max-w-2xl w-full mx-4 bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl p-8 transition-all duration-500 hover:shadow-2xl hover:scale-[1.01] border border-white/20 hover:border-white/30 animate-glow">
-      <div className="flex gap-2 mb-6">
+    <div className="max-w-2xl w-full mx-auto bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl p-8 transition-all duration-500 hover:shadow-2xl hover:scale-[1.01] border border-white/20 hover:border-white/30 animate-glow min-h-[60vh] flex flex-col items-center justify-center">
+      <div className="flex gap-2 mb-6 ">
         <input
           type="text"
           placeholder="Enter city"
-          className="flex-1 p-2 border rounded-lg transition-all duration-300 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="flex-1 p-2 border text-gray-200 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:border-transparent bg-black/25 backdrop-blur-sm"
           value={city}
           onChange={(e) => setCity(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && fetchWeather()}

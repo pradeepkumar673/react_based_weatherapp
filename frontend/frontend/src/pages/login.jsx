@@ -90,7 +90,7 @@ const Login = () => {
             <div className="relative z-10 flex flex-col justify-center items-center border rounded-md px-10 py-10 bg-black/40 border-none backdrop-blur-sm">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img src={lightLogo} alt="PradeepKumaeEmblem" className="mx-auto h-20 w-auto" />
-                    <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-pink-500">Sign in to PradeepKumar</h2>
+                    <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-400">Sign in to PradeepKumar</h2>
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -106,7 +106,7 @@ const Login = () => {
                                     autoComplete="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-pink-500 outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                                    className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
                                 />
                             </div>
                         </div>
@@ -127,7 +127,7 @@ const Login = () => {
                                     autoComplete="current-password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-pink-500 outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                                    className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
                                 />
                             </div>
                         </div>
